@@ -18,7 +18,7 @@ public class Main {
 		ResultSet R1=null;
 		Query Req1=null;
 		try {
-			Req1 = SPQR.readQuery("C:\\Users\\Pierre\\workspace\\SemanticWeb\\src\\rq1.sparql");
+			Req1 = SPQR.readQuery("rq1.sparql");
 			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());

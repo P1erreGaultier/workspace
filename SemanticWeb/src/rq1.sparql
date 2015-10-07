@@ -1,6 +1,5 @@
 PREFIX ex: <http://example.org/>
-SELECT ?pers
-WHERE
-{
-  ?pers a ex:person
-}    
+SELECT ?person
+WHERE {
+    ?person a ex:Person.
+}
