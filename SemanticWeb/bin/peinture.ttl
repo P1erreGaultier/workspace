@@ -1,0 +1,63 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://example.org/> .
+
+:Literal rdf:type rdfs:Class.
+
+:technique rdf:type rdfs:Property;
+            rdfs:domain :Artifact;
+            rdfs:range :Literal.
+
+:Artifact rdf:type rdfs:Class.
+
+:Sculpture rdf:type rdfs:Class;
+            rdfs:subClassOf :Artifact.
+
+:Artist rdf:type rdfs:Class.
+
+:creates rdf:type rdfs:Property;
+            rdfs:domain :Artist;
+            rdfs:range :Artifact.
+
+:first_name rdf:type rdfs:Property;
+            rdfs:domain :Artist;
+            rdfs:range :Literal.
+
+:last_name rdf:type rdfs:Property;
+            rdfs:domain :Artist;
+            rdfs:range :Literal.
+
+:Sculptor rdf:type rdfs:Class;
+            rdfs:subClassOf :Artist.
+
+:sculpts rdf:type rdfs:Property;
+            rdfs:subPropertyOf :creates;
+            rdfs:domain :Sculptor;
+            rdfs:range :Sculpture.
+
+:Painter rdf:type rdfs:Class;
+            rdfs:subClassOf :Artist.
+
+:Painting rdf:type rdfs:Class;
+            rdfs:subClassOf :Artifact.
+
+:paints rdf:type rdfs:Property;
+            rdfs:subPropertyOf :creates;
+            rdfs:domain :Painter;
+            rdfs:range :Painting.
+
+:Cubist rdf:type rdfs:Class;
+        rdfs:subClassOf :Painter.
+
+:Flemish rdf:type rdfs:Class;
+        rdfs:subClassOf :Painter.
+
+:r1 rdf:type :Flemish;
+    :first_name "Rembrandt";
+    :last_name "Smith";
+    :paints :r2.
+
+:r2 rdf:type :Painting;
+    :technique "oil on canevas";
+    :file_size "17";
+    :title "Abraham and Isaac".
