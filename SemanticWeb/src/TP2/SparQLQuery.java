@@ -29,17 +29,18 @@ public class SparQLQuery {
 	private Dataset dataset;
 	
 	/*
-	 *Constructeur
+	 *Constructor
 	 */
 	public SparQLQuery() {
 		this.dataset = new DatasetImpl(ModelFactory.createDefaultModel());
 	}
 	
 	/* Metode qui lie une fichier contenant une requete sparql et qui renvoie une String */
-	public String readQuery(String fichier) throws IOException{
+	public String readQuery(String fichier){
         List<String> lines = null;
         String query = "";
         try {
+        	/* a changer en fonction du pc*/
             lines = Files.readAllLines(Paths.get("C:\\Users\\Pierre\\workspace\\SemanticWeb\\src\\",fichier), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,14 +75,10 @@ public class SparQLQuery {
 		Query Q = null;
 		ResultSet results=null;
 		/*on crée la requette a partir du fichier */
-		try {
-			Q = QueryFactory.create(this.readQuery(sQ));
-		} catch (IOException e1) {
-			System.out.println(e1.getMessage());
-		}
+		Q = QueryFactory.create(this.readQuery(sQ));
 		/*Execution*/
 		try {
-		     QueryExecution qexec= QueryExecutionFactory.create(Q, dataset);
+		     QueryExecution qexec= QueryExecutionFactory.create(Q, this.dataset);
 		     results = qexec.execSelect() ;
 		} catch(Exception e) {
 		    System.err.println(e.getMessage());
@@ -93,11 +90,7 @@ public class SparQLQuery {
     public void doQueryUpdate(String sQ) {
     	UpdateRequest Q = null;
     	/*on crée la requette a partir du fichier */
-		try {
-			Q = UpdateFactory.create(this.readQuery(sQ));
-		} catch (IOException e1) {
-			System.out.println(e1.getMessage());
-		}
+		Q = UpdateFactory.create(this.readQuery(sQ));
 		/*Execution*/
         try {
             UpdateProcessor qexec = UpdateExecutionFactory.create(Q, this.dataset);

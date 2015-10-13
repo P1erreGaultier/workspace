@@ -10,6 +10,7 @@ public class Main {
 	 * @throws  
 	 */
 	public static void main(String[] args) {
+		
 		SparQLQuery SPQR = new SparQLQuery();
 
         ResultSet res = null;
