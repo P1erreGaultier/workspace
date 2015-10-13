@@ -12,7 +12,6 @@ public class Main {
 	public static void main(String[] args) {
 		
 		SparQLQuery SPQR = new SparQLQuery();
-
         ResultSet res = null;
 
         // on charge le graphe par défaut à partir d'un modèle RDF/XML

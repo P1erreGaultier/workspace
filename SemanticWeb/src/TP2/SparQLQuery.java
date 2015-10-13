@@ -81,11 +81,12 @@ public class SparQLQuery {
 		     QueryExecution qexec= QueryExecutionFactory.create(Q, this.dataset);
 		     results = qexec.execSelect() ;
 		} catch(Exception e) {
-		    System.err.println(e.getMessage());
+		    System.out.println(e.getMessage());
 		}
 		return results;
 	}
 
+	
 	/* methode qui execute une requete sparql de type update sur le dataset de cette classe */
     public void doQueryUpdate(String sQ) {
     	UpdateRequest Q = null;
@@ -96,7 +97,7 @@ public class SparQLQuery {
             UpdateProcessor qexec = UpdateExecutionFactory.create(Q, this.dataset);
             qexec.execute();
         } catch(Exception e) {
-            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 	/* methode qui active l'inference, soit sur le graphe par default, soit sur le graphe nommé en parametre */
@@ -119,7 +120,5 @@ public class SparQLQuery {
             System.out.println(soln.toString());
         }
     }
-
-    
     
 }
